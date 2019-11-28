@@ -52,4 +52,19 @@ class PassportAuthController extends Controller
             'message' => 'Successfully registered'
         ], 200);
     }
+
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+        return response()->json([
+            'message'=>'Logged out successfully'
+        ]);
+    }
+
+    public function users()
+    {
+        return response()->json([
+            User::all()
+        ], 200);
+    }
 }
