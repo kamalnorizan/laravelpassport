@@ -14,7 +14,12 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @foreach ($users as $user)
+                        - <strong>{{$user->name}}</strong> <br>
+                        @foreach ($user->posts as $post)
+                            ~{{$post->title}}<em>{{$post->user->name}}</em> <br>
+                        @endforeach
+                    @endforeach
                 </div>
             </div>
         </div>
